@@ -38,7 +38,7 @@ You can customize your theme by changin `theme.vars`
 ```json
 {
     "theme": {
-        "name": "seven",
+        "name": "lingonberry",
         "vars": {
             "description": "description here",
         }
@@ -50,7 +50,7 @@ You can customize your theme by changin `theme.vars`
 ```json
 {
     "theme": {
-        "name": "seven",
+        "name": "lingonberry",
         "vars": {
             "links": [
                 {
