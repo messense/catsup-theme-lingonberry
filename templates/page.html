@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block title %}{{ site.name }}{% if pagination.page > 1 %} - 第 {{ pagination.page }} 页{% endif %}{% endblock %}
+{% block content %}
+<div class="content section-inner">                     
+    <div class="posts">
+        {% for post in pagination.items %}
+        <div class="post">
+            <div class="content-inner">
+                <div class="post-header">
+                    {% if theme.display_thumbnail and 'thumbnail' in post.meta %}
+                        <div class="featured-media">
+                            <a href="{{ url_for(post) }}" title="{{ post.title }}" class="center-block thumbnail" style="background-image: url('{{ post.meta.thumbnail }}')"></a>
+                        </div> <!-- /featured-media -->
+                    {% endif %}
+                    <h2 class="post-title">{{ post.title }}</h2>
+                </div> <!-- /post-header -->
+                <div class="post-content">
+                    {% if theme.use_excerpt %}
+                        {{ post.content|excerpt(theme.max_excerpt_length) }}
+                    {% else %}
+                        {{ post.content }}
+                    {% endif %}                                                                      
+                </div> <!-- /post-content -->
+            </div> <!-- /post-inner -->
+        </div> <!-- /post -->
+        {% endfor %}
+    </div> <!-- /posts -->
+    <div class="clear"></div>
+</div> <!-- /content section-inner -->
+{% endblock %}

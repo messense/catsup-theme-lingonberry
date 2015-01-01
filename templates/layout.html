@@ -19,32 +19,80 @@
         <div class="navigation">
             <div class="navigation-inner section-inner">
                 <ul class="blog-menu">
-                    
+                    <li class="menu-item">
+                        <a href="{{ url_for('index') }}" title="首页">首页</a>
+                    </li>
+                    <li class="menu-item menu-item-has-children has-children">
+                        <ul class="sub-menu">
+                        {% for tag in generator.tags %}
+                            <li class="menu-item">
+                                <a class="tag" href="{{ url_for(tag) }}" title="{{ tag.name }}">{{ tag.name }} ({{ tag.count }})</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    <li>
+                    <li class="menu-item">
+                        <a href="{{ url_for('archives') }}" title="归档">归档</a>
+                    </li>
+                    {% for page in pages %}
+                    <li class="menu-item">
+                        <a href="{{ url_for(page) }}" title="{{ page.title }}">{{ page.title }}
+                    </li>
+                    {% endfor %}
                 </ul>
                 <div class="clear"></div>
             </div> <!-- /navigation-inner -->
         </div> <!-- /navigation -->
         <div class="header section">
             <div class="header-inner section-inner">
-                <a href="/" title="{{ site.name }}" rel="home" class="logo">
+                <a href="{{ url_for('index') }}" title="{{ site.name }}" rel="home" class="logo">
                     <img src="" alt="{{ site.name }}">
                 </a>             
                 <h1 class="blog-title">
-                    <a href="/" title="{{ site.name }} &mdash; {{ site.description }}" rel="home">{{ site.name }}</a>
+                    <a href="{{ url_for('index') }}" title="{{ site.name }} &mdash; {{ site.description }}" rel="home">{{ site.name }}</a>
                 </h1>
-                
                 <div class="nav-toggle">
-                
                     <div class="bar"></div>
                     <div class="bar"></div>
                     <div class="bar"></div>
-                    
                     <div class="clear"></div>
-                
                 </div>
-                                
                  <div class="clear"></div>
-                                                                                            
             </div> <!-- /header section -->
-            
         </div> <!-- /header-inner section-inner -->
+        {% block content %}{% endblock %}
+        <div class="footer section">
+            <div class="footer-inner section-inner">
+                    <div class="footer-a widgets">
+                        
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="footer-b widgets">
+                        
+                        <div class="clear"></div>
+                    </div>
+                    <div class="footer-c widgets">
+
+                        <div class="clear"></div>
+                    </div>
+                <div class="clear"></div>
+            </div> <!-- /footer-inner -->
+        </div> <!-- /footer -->
+        <div class="credits section">
+            <div class="credits-inner section-inner">
+                <p class="credits-left">
+                    <span>Copyright</span> &copy; 2015 <a href="{{ url_for('index') }}" title="{{ site.name }}">{{ site.name }}</a>
+                </p>
+                <p class="credits-right">
+                    <span>Theme by <a href="http://www.andersnoren.se">Anders Noren</a> &mdash; </span><a title="To the top" class="tothetop">Up &uarr;</a>
+                </p>
+                <div class="clear"></div>
+            </div> <!-- /credits-inner -->
+        </div> <!-- /credits -->
+        <script type='text/javascript' src="{{ static_url('js/jquery.min.js') }}"></script>
+        <script type='text/javascript' src="{{ static_url('js/flexslider.min.js') }}"></script>
+        <script type='text/javascript' src="{{ static_url('js/mediaelement-and-player.min.js') }}"></script>
+        <script type='text/javascript' src="{{ static_url('js/global.js') }}"></script>
+    </body>
+</html>
