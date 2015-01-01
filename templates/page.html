@@ -15,17 +15,17 @@
                     {% else %}
                         {% set post_part = 'content.html' %}
                     {% endif %}
-                    <div class="">
+                    <div class="post">
                         {% include post_part %}
                         <div class="clear"></div>
                     </div> <!-- /post -->
                 {% endfor %}
                 <div class="post-nav archive-nav">
                     {% if pagination.has_next %}
-                    <a href="{{ pagination.next_permalink }}">&laquo; Older<span> posts</span></a>
+                    <a href="{{ pagination.next_permalink }}" class="post-nav-older">&laquo; Older<span> posts</span></a>
                     {% endif %}
-                    {% if pagination.has_prev %}      
-                    <a href="{{ pagination.prev_permalink }}">Newer<span> posts</span> &raquo;</a>
+                    {% if pagination.has_prev %}
+                    <a href="{{ pagination.prev_permalink }}" class="post-nav-newer">Newer<span> posts</span> &raquo;</a>
                     {% endif %}
                     <div class="clear"></div>
                 </div> <!-- /post-nav archive-nav -->

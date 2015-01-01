@@ -1,6 +1,6 @@
 {% from "utils.html" import analytics %}
 <!DOCTYPE html>
-<html class="no-js">
+<html class="js">
     <head profile="http://gmpg.org/xfn/11">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
@@ -47,7 +47,7 @@
         <div class="header section">
             <div class="header-inner section-inner">
                 <a href="{{ url_for('index') }}" title="{{ site.name }}" rel="home" class="logo">
-                    <img src="" alt="{{ site.name }}">
+                    <img src="{{ static_url('images/avatar.png') }}" alt="{{ site.name }}">
                 </a>
                 <h1 class="blog-title">
                     <a href="{{ url_for('index') }}" title="{{ site.name }} &mdash; {{ site.description }}" rel="home">{{ site.name }}</a>
@@ -65,16 +65,49 @@
         <div class="footer section">
             <div class="footer-inner section-inner">
                     <div class="footer-a widgets">
-                        
+                        <div class="widget">
+                            <div class="widget-content">
+                                <h3 class="widget-title">Tag Cloud</h3>
+                                <ul>
+                                {% for tag in generator.tags if tag.count > 2 %}
+                                    <li>
+                                        <a class="tag" href="{{ url_for(tag) }}" title="{{ tag.name }}">{{ tag.name }} ({{ tag.count }})</a>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
                         <div class="clear"></div>
                     </div>
 
                     <div class="footer-b widgets">
-                        
+                        <div class="widget">
+                            <div class="widget-content">
+                                <h3 class="widget-title">Archives</h3>
+                                <ul>
+                                {% for archive in generator.archives %}
+                                    <li>
+                                        <a href="{{ url_for(archive) }}">{{ archive.year }} ({{ archive.count }})</a>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
                         <div class="clear"></div>
                     </div>
                     <div class="footer-c widgets">
-
+                        <div class="widget">
+                            <div class="widget-content">
+                                <h3 class="widget-title">Links</h3>
+                                <ul>
+                                {% for link in theme.links %}
+                                    <li>
+                                        <a href="{{ link["url"] }}" title="{{ link["description"] }}" target="_blank">{{ link["name"] }}</a>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
                         <div class="clear"></div>
                     </div>
                 <div class="clear"></div>
