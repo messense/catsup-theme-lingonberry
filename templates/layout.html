@@ -1,0 +1,50 @@
+{% from "utils.html" import analytics %}
+<!DOCTYPE html>
+<html class="no-js" <?php language_attributes(); ?>>
+    <head profile="http://gmpg.org/xfn/11">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+        <title>{% block title %}{{ site.name }}{% endblock %}</title>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="author" content="{{ author.name }}" />
+        <meta name="description" content="{{ site.description }}" />
+        <link rel="stylesheet" href="{{ static_url('style.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ static_url('pygments.css') }}" type="text/css" />
+        <link rel="alternate" type="application/rss+xml" href="{{ url_for('feed') }}" title="{{ site.name }}" />
+        <link rel="canonical" href="{{ permalink }}" />
+        {{ analytics() }}
+    </head>
+    <body>
+        <div class="navigation">
+            <div class="navigation-inner section-inner">
+                <ul class="blog-menu">
+                    
+                </ul>
+                <div class="clear"></div>
+            </div> <!-- /navigation-inner -->
+        </div> <!-- /navigation -->
+        <div class="header section">
+            <div class="header-inner section-inner">
+                <a href="/" title="{{ site.name }}" rel="home" class="logo">
+                    <img src="" alt="{{ site.name }}">
+                </a>             
+                <h1 class="blog-title">
+                    <a href="/" title="{{ site.name }} &mdash; {{ site.description }}" rel="home">{{ site.name }}</a>
+                </h1>
+                
+                <div class="nav-toggle">
+                
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    
+                    <div class="clear"></div>
+                
+                </div>
+                                
+                 <div class="clear"></div>
+                                                                                            
+            </div> <!-- /header section -->
+            
+        </div> <!-- /header-inner section-inner -->
